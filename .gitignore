@@ -1,0 +1,13 @@
+# IntelliJ artifacts
+*.iml
+.idea/
+
+# OSX artifacts
+.DS_Store
+
+# Gradle artifacts
+build/
+.gradle/
+
+# Other
+local.properties
