@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -115,6 +116,9 @@ public class ImageFragment extends Fragment implements Observer {
         }
         if (pi != null) {
             getView().setBackgroundColor(pi.getRgb());
+        } else {
+            // This could get awkward if multiple images show this simultaneously!
+            Toast.makeText(getActivity(), "No palette item for " + palette, Toast.LENGTH_SHORT).show();
         }
     }
 
