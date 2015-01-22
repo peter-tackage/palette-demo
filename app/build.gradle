@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'android-L'
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 21
+    buildToolsVersion "21.1.1"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
@@ -10,21 +10,20 @@ android {
 
     defaultConfig {
         applicationId "com.moac.android.palettedemo"
-        minSdkVersion 'L'
-        targetSdkVersion 'L'
+        minSdkVersion 14
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:palette-v7:+'
-    compile 'com.android.support:support-v13:19.+'
+    compile 'com.android.support:palette-v7:21.0.3'
+    compile 'com.android.support:support-v13:21.0.3'
 }

@@ -22,7 +22,7 @@ public class PaletteDemoActivity extends Activity implements ImageFragment.Fragm
             R.drawable.sample_pic5
     };
     private static final PaletteOption DEFAULT_PALETTE_OPTION = VIBRANT;
-    private static final float WIDTH_FACTOR = 3;
+    private static final float WIDTH_FACTOR = 1.2f;
 
     private PaletteOptionObservable paletteObservable;
 

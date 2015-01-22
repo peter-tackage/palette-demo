@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
-import android.support.v7.graphics.PaletteItem;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,29 +89,29 @@ public class ImageFragment extends Fragment implements Observer {
 
         if (getView() == null) return;
 
-        PaletteItem pi;
+        Palette.Swatch pi;
         Bitmap bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
         switch (palette) {
             case VIBRANT:
-                pi = Palette.generate(bmp).getVibrantColor();
+                pi = Palette.generate(bmp).getVibrantSwatch();
                 break;
             case VIBRANT_DARK:
-                pi = Palette.generate(bmp).getDarkVibrantColor();
+                pi = Palette.generate(bmp).getDarkVibrantSwatch();
                 break;
             case VIBRANT_LIGHT:
-                pi = Palette.generate(bmp).getLightVibrantColor();
+                pi = Palette.generate(bmp).getLightVibrantSwatch();
                 break;
             case MUTED:
-                pi = Palette.generate(bmp).getMutedColor();
+                pi = Palette.generate(bmp).getMutedSwatch();
                 break;
             case MUTED_DARK:
-                pi = Palette.generate(bmp).getDarkMutedColor();
+                pi = Palette.generate(bmp).getDarkMutedSwatch();
                 break;
             case MUTED_LIGHT:
-                pi = Palette.generate(bmp).getLightVibrantColor();
+                pi = Palette.generate(bmp).getLightVibrantSwatch();
                 break;
             default:
-                pi = Palette.generate(bmp).getVibrantColor();
+                pi = Palette.generate(bmp).getVibrantSwatch();
         }
         if (pi != null) {
             getView().setBackgroundColor(pi.getRgb());
