@@ -79,7 +79,7 @@ public class PaletteDemoActivity extends Activity implements ImageFragment.Fragm
     }
 
     @Override
-    public PaletteOptionObservable getPaletteObservable() {
+    public Observable getPaletteObservable() {
         return paletteObservable;
     }
 
@@ -92,7 +92,7 @@ public class PaletteDemoActivity extends Activity implements ImageFragment.Fragm
         return itemId >= 0 && itemId < PaletteOption.values().length;
     }
 
-    static class PaletteOptionObservable extends Observable {
+    private static class PaletteOptionObservable extends Observable {
         PaletteOption paletteOption;
 
         public PaletteOptionObservable(PaletteOption defaultPalette) {

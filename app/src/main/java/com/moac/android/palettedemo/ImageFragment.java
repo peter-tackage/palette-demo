@@ -121,12 +121,12 @@ public class ImageFragment extends Fragment implements Observer {
         }
     }
 
-    private PaletteOptionObservable getPaletteObservable() {
+    private Observable getPaletteObservable() {
         return fragmentContainer.getPaletteObservable();
     }
 
     interface FragmentContainer {
-        PaletteOptionObservable getPaletteObservable();
+        Observable getPaletteObservable();
     }
 
 }
