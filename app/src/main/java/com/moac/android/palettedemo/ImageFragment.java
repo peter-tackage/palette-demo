@@ -15,8 +15,6 @@ import android.widget.Toast;
 import java.util.Observable;
 import java.util.Observer;
 
-import static com.moac.android.palettedemo.PaletteDemoActivity.PaletteOptionObservable;
-
 public class ImageFragment extends Fragment implements Observer {
 
     private static final String RESOURCE_ID_ARG = "RESOURCE_ID_ARG";
@@ -85,39 +83,41 @@ public class ImageFragment extends Fragment implements Observer {
         onChangePaletteOption((PaletteOption) data);
     }
 
-    private void onChangePaletteOption(PaletteOption palette) {
+    private void onChangePaletteOption(PaletteOption paletteOption) {
 
         if (getView() == null) return;
 
-        Palette.Swatch pi;
         Bitmap bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        switch (palette) {
+        Palette palette = Palette.from(bmp).generate();
+        Palette.Swatch swatch;
+
+        switch (paletteOption) {
             case VIBRANT:
-                pi = Palette.generate(bmp).getVibrantSwatch();
+                swatch = palette.getVibrantSwatch();
                 break;
             case VIBRANT_DARK:
-                pi = Palette.generate(bmp).getDarkVibrantSwatch();
+                swatch = palette.getDarkVibrantSwatch();
                 break;
             case VIBRANT_LIGHT:
-                pi = Palette.generate(bmp).getLightVibrantSwatch();
+                swatch = palette.getLightVibrantSwatch();
                 break;
             case MUTED:
-                pi = Palette.generate(bmp).getMutedSwatch();
+                swatch = palette.getMutedSwatch();
                 break;
             case MUTED_DARK:
-                pi = Palette.generate(bmp).getDarkMutedSwatch();
+                swatch = palette.getDarkMutedSwatch();
                 break;
             case MUTED_LIGHT:
-                pi = Palette.generate(bmp).getLightVibrantSwatch();
+                swatch = palette.getLightVibrantSwatch();
                 break;
             default:
-                pi = Palette.generate(bmp).getVibrantSwatch();
+                swatch = palette.getVibrantSwatch();
         }
-        if (pi != null) {
-            getView().setBackgroundColor(pi.getRgb());
+        if (swatch != null) {
+            getView().setBackgroundColor(swatch.getRgb());
         } else {
             // This could get awkward if multiple images show this simultaneously!
-            Toast.makeText(getActivity(), "No palette item for " + palette, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "No swatch for " + palette, Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
@@ -11,9 +11,7 @@ android {
     defaultConfig {
         applicationId "com.moac.android.palettedemo"
         minSdkVersion 14
-        targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 22
     }
     buildTypes {
         release {
@@ -24,6 +22,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:palette-v7:21.0.3'
-    compile 'com.android.support:support-v13:21.0.3'
+    compile 'com.android.support:palette-v7:22.1.1'
+    compile 'com.android.support:support-v13:22.1.1'
 }
