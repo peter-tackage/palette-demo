@@ -1,5 +1,6 @@
 package com.moac.android.palettedemo;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -61,9 +62,11 @@ public class PaletteDemoActivity extends AppCompatActivity implements ImageFragm
     }
 
     private void adjustForStatusBar(Toolbar toolbar) {
-        // Set paddingTop of toolbar to height of status bar.
-        // Fixes statusbar covers toolbar issue
-        toolbar.setPadding(0, getStatusBarHeight(this), 0, 0);
+        // No need to adjust on platforms that don't support transparent system bars
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // Set paddingTop of toolbar to height of status bar.
+            toolbar.setPadding(0, getStatusBarHeight(this), 0, 0);
+        }
     }
 
     @Override
