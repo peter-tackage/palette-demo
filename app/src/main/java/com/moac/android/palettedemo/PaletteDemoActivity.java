@@ -1,18 +1,20 @@
 package com.moac.android.palettedemo;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.Observable;
 
 import static com.moac.android.palettedemo.PaletteOption.VIBRANT;
+import static com.moac.android.palettedemo.ScreenUtils.getStatusBarHeight;
 
-public class PaletteDemoActivity extends Activity implements ImageFragment.FragmentContainer {
+public class PaletteDemoActivity extends AppCompatActivity implements ImageFragment.FragmentContainer {
 
     private final static int[] IMAGE_RESOURCES = {
             R.drawable.sample_pic1,
@@ -30,12 +32,15 @@ public class PaletteDemoActivity extends Activity implements ImageFragment.Fragm
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palette_demo);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        adjustForStatusBar(toolbar);
 
         paletteObservable = new PaletteOptionObservable(DEFAULT_PALETTE_OPTION);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager_image);
-        viewPager.setOffscreenPageLimit(viewPager.getOffscreenPageLimit() * (int)WIDTH_FACTOR);
-        final FragmentPagerAdapter pagerAdapter = new FragmentPagerAdapter(getFragmentManager()) {
+        viewPager.setOffscreenPageLimit(viewPager.getOffscreenPageLimit() * (int) WIDTH_FACTOR);
+        final FragmentPagerAdapter pagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 return ImageFragment.create(IMAGE_RESOURCES[position], paletteObservable.paletteOption);
@@ -53,6 +58,12 @@ public class PaletteDemoActivity extends Activity implements ImageFragment.Fragm
         };
         viewPager.setAdapter(pagerAdapter);
 
+    }
+
+    private void adjustForStatusBar(Toolbar toolbar) {
+        // Set paddingTop of toolbar to height of status bar.
+        // Fixes statusbar covers toolbar issue
+        toolbar.setPadding(0, getStatusBarHeight(this), 0, 0);
     }
 
     @Override

@@ -1,10 +1,10 @@
 package com.moac.android.palettedemo;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.graphics.Palette;
 import android.view.LayoutInflater;
 import android.view.View;

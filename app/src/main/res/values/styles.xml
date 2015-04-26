@@ -1,17 +1,10 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Material.Light">
-        <item name="android:actionBarStyle">@style/MyActionBar</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
-    </style>
+    <style name="AppTheme" parent="AppTheme.Base"/>
 
-    <!-- Transparent ActionBar style -->
-    <style name="MyActionBar" parent="@android:style/Widget.Material.Light.ActionBar.Solid">
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:backgroundStacked">@android:color/transparent</item>
-        <item name="android:backgroundSplit">@android:color/transparent</item>
-    </style>
+    <!-- NoActionBar as Toolbar is being used -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar"/>
+
+    <style name="AppToolbarStyle" parent="ThemeOverlay.AppCompat.ActionBar"/>
 
 </resources>

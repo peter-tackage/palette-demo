@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- When using translucent navigation/status the content actually lies underneath these
+    system bars, meaning that we need to adjust for the height of the status bar. This is done
+    programmatically (see Activity). For the navigation bar, we need to ensure it is not covering
+    over the overflow menu. To achieve this, we disable translucent navigation bar for devices that
+     move the navigation controls from the bottom to the side in landscape mode; aka "phones" -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:windowTranslucentNavigation">@bool/allowTranslucentNavigation</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+</resources>

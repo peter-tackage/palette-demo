@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Enable for landscape devices that show navigation at the bottom in landscape -->
+    <!-- The use of sw720 is not perfect, but at least disables it for my Nexus 4 -->
+    <item name="allowTranslucentNavigation" type="bool">true</item>
+</resources>
